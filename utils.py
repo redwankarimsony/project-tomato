@@ -4,6 +4,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from keras.callbacks import Callback, EarlyStopping, ReduceLROnPlateau, ModelCheckpoint
 
+# Setting default fontsize and dpi
+plt.rcParams["font.size"] = 12
+plt.rcParams["savefig.dpi"] = 300
+
 
 def print_config(config_dict=None):
     for k, v in config_dict.items():
