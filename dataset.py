@@ -1,6 +1,7 @@
 import os
 import json
 import pandas as pd
+from utils import print_config
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
 
@@ -72,3 +73,7 @@ def load_dataset(config_file="config.json"):
 
 if __name__ == "__main__":
     train_generator, valid_generator, test_generator = load_dataset()
+    print("\n\n______________CLASS INDICES TO NAME MAPPING_______________")
+    print_config(train_generator.class_indices)
+    print("___________________________________________________________\n\n")
+
