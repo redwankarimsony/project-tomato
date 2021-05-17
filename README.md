@@ -25,11 +25,6 @@
 │   ├── test.csv
 │   ├── train.csv
 │   └── valid.csv
-├── __pycache__
-│   ├── dataset.cpython-38.pyc
-│   ├── evaluate.cpython-38.pyc
-│   ├── model.cpython-38.pyc
-│   └── utils.cpython-38.pyc
 ├── config.json
 ├── dataset_preparation.py
 ├── dataset.py
