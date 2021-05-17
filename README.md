@@ -35,3 +35,19 @@
 ├── train.py
 └── utils.py
 ```
+
+
+
+# How to Run it
+## Run on Google Colab
+### Training 
+``` 
+!git clone https://github.com/redwankarimsony/project-tomato.git
+!cd project-tomato
+!python train.py
+```
+### Evaluation
+```
+!python evaluate.py
+```
+
