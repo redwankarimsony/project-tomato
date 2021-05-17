@@ -1,14 +1,18 @@
-import os
 import json
+import os
+import shutil
 import textwrap
+
+import cv2
 import matplotlib.pyplot as plt
-import seaborn as sns
 import numpy as np
 import pandas as pd
+import seaborn as sns
 import tensorflow as tf
 from keras.models import load_model
-from dataset import load_dataset
 from sklearn.metrics import classification_report
+
+from dataset import load_dataset
 
 # Setting default fontsize and dpi
 plt.rcParams["font.size"] = 12
@@ -93,6 +97,53 @@ def plot_confusion_matrix(config_file="config.json"):
     print(classification_report(y_true, y_pred))
 
 
+def find_misclassified(config_file="config.json"):
+    # Loading the configuration file
+    config = json.load(open(config_file, 'r'))
+
+    # Loading the test_datagen
+    _, _, test_generator = load_dataset()
+    print(f"[INFO] Total Number of Test instances: {len(test_generator) * config['batch_size']}")
+
+    # Loading the Saved Model
+    model = load_model(os.path.join(config['checkpoint_filepath'], 'saved_model'))
+    model.summary()
+
+    # Removing the old directory or creating the new one
+    classification_dir = os.path.join(config['checkpoint_filepath'], 'misclassified')
+    if os.path.exists(classification_dir):
+        shutil.rmtree(classification_dir)
+        print(f"[INFO] Removing the old \'{classification_dir}\' directory")
+        print(f"[INFO] Creating the new \'{classification_dir}\' directory")
+        os.mkdir(classification_dir)
+    else:
+        print(f"[INFO] Creating the new \'{classification_dir}\' directory")
+        os.mkdir(classification_dir)
+
+    # Generating Predictions
+    print(f"[INFO] Creating predictions...")
+    pred_prob = model.predict(test_generator)
+    y_pred = np.argmax(pred_prob, axis=1).astype(int)
+    y_true = np.array(test_generator.classes).astype(int)
+    class_labels = list(test_generator.class_indices.keys())
+    file_paths = test_generator.filepaths
+    print(f"[INFO] Prediction generation complete !")
+
+
+    for prediction, ground_truth, img_url in zip(y_pred, y_true, file_paths):
+        if prediction != ground_truth:
+            new_filename = img_url.split(os.path.sep)[-1].replace('image ', '').replace('.JPG', '')
+            img = cv2.imread(img_url)
+            img = cv2.copyMakeBorder(img, 55, 0, 0, 0, cv2.BORDER_CONSTANT, None, [255, 255, 255])
+            img = cv2.putText(img, f"Actual: {class_labels[ground_truth]}", (2, 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5,
+                              (255, 0, 0), 1, cv2.LINE_AA)
+            img = cv2.putText(img, f"Prediction: {class_labels[prediction]}", (2, 48), cv2.FONT_HERSHEY_SIMPLEX, 0.5,
+                              (0, 0, 255), 1, cv2.LINE_AA)
+            cv2.imwrite(os.path.join(classification_dir, class_labels[ground_truth] + new_filename + '.jpg'), img)
+            print(os.path.join(classification_dir, class_labels[ground_truth] + new_filename + '.jpg'))
+
+
 if __name__ == "__main__":
-    evaluate()
-    plot_confusion_matrix()
+    # evaluate()
+    # plot_confusion_matrix()
+    find_misclassified()
