@@ -1,6 +1,7 @@
 {
   "dataset_dir" : "PlantVillage-Tomato",
-  "checkpoint_filepath": "NoCLAHE-NoAug-NoDense",
+  "checkpoint_filepath": "NoCLAHE-NoAug-Dense",
+  "add_dense": true,
   "img_height": 224,
   "img_width": 224,
   "batch_size": 16,

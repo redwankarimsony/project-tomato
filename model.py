@@ -1,7 +1,7 @@
 import json
 import tensorflow as tf
 from keras.models import Model, Sequential
-from keras.layers import BatchNormalization, Dense, Flatten
+from keras.layers import BatchNormalization, Dense, Flatten, Dropout
 from keras.optimizers import Adam, SGD
 from keras.applications import MobileNetV2, DenseNet201, ResNet152V2, VGG19, InceptionV3
 
@@ -55,8 +55,16 @@ def build_model():
     # Creating Sequential Model
     model = Sequential()
     model.add(backbone)
-    model.add(BatchNormalization())
-    model.add(Flatten())
+    if config["add_dense"]:
+        model.add(BatchNormalization())
+        model.add(Dense(128, activation="relu"))
+        model.add(Dropout(0.5))
+        model.add(Dense(64, activation="relu"))
+        model.add(BatchNormalization())
+        model.add(Flatten())
+    else:
+        model.add(BatchNormalization())
+        model.add(Flatten())
     model.add(Dense(config["n_classes"], activation='softmax'))
 
     # Optimizer selection
@@ -78,3 +86,4 @@ def build_model():
 if __name__ == "__main__":
     model = build_model()
     print(model)
+    model.summary()
