@@ -144,6 +144,6 @@ def find_misclassified(config_file="config.json"):
 
 
 if __name__ == "__main__":
-    # evaluate()
-    # plot_confusion_matrix()
+    evaluate()
+    plot_confusion_matrix()
     find_misclassified()
