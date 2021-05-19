@@ -71,7 +71,7 @@ def plot_training_summary(run_config):
         plt.ylabel('Accuracy')
         plt.grid("both")
         plt.legend()
-        plt.savefig(os.path.join(run_config['checkpoint_filepath'], 'graphs', '1.accuracy-comparison.png'))
+        plt.savefig(os.path.join(run_config['checkpoint_filepath'], 'graphs', '1.accuracy-comparison.pdf'))
 
         # Plotting the loss
         fig = plt.figure(figsize=(10, 6))
@@ -82,7 +82,7 @@ def plot_training_summary(run_config):
         plt.ylabel('Loss')
         plt.grid("both")
         plt.legend()
-        plt.savefig(os.path.join(run_config['checkpoint_filepath'], 'graphs', '2.loss-comparison.png'))
+        plt.savefig(os.path.join(run_config['checkpoint_filepath'], 'graphs', '2.loss-comparison.pdf'))
 
         # Plotting the Learning Rate
         fig = plt.figure(figsize=(10, 6))
@@ -92,7 +92,7 @@ def plot_training_summary(run_config):
         plt.ylabel('Learning Rate')
         plt.grid("both")
         plt.legend()
-        plt.savefig(os.path.join(run_config['checkpoint_filepath'], 'graphs', '3.learning-rate.png'))
+        plt.savefig(os.path.join(run_config['checkpoint_filepath'], 'graphs', '3.learning-rate.pdf'))
 
 
 if __name__ == "__main__":
@@ -100,3 +100,4 @@ if __name__ == "__main__":
     default_config_file = 'config.json'
     config = json.load(open(default_config_file, 'r'))
     print_config(config)
+    plot_training_summary(config)

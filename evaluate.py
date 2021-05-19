@@ -88,7 +88,7 @@ def plot_confusion_matrix(config_file="config.json"):
     plt.xlabel('Predicted label')
     ax.set_xticklabels(textwrap.fill(x.get_text(), 20) for x in ax.get_xticklabels())
     ax.set_yticklabels(textwrap.fill(x.get_text(), 20) for x in ax.get_yticklabels())
-    filepath = os.path.join(config['checkpoint_filepath'], 'graphs', '4.confusion-matrix.png')
+    filepath = os.path.join(config['checkpoint_filepath'], 'graphs', '4.confusion-matrix.pdf')
     plt.savefig(filepath)
     print(f"\n\n[INFO] Confusion Matrix is saved in \"{filepath}\"")
 
@@ -109,6 +109,15 @@ def find_misclassified(config_file="config.json"):
     model = load_model(os.path.join(config['checkpoint_filepath'], 'saved_model'))
     model.summary()
 
+    # Generating Predictions
+    print(f"[INFO] Creating predictions...")
+    pred_prob = model.predict(test_generator)
+    y_pred = np.argmax(pred_prob, axis=1).astype(int)
+    y_true = np.array(test_generator.classes).astype(int)
+    class_labels = list(test_generator.class_indices.keys())
+    file_paths = test_generator.filepaths
+    print(f"[INFO] Prediction generation complete !")
+
     # Removing the old directory or creating the new one
     classification_dir = os.path.join(config['checkpoint_filepath'], 'misclassified')
     if os.path.exists(classification_dir):
@@ -120,16 +129,7 @@ def find_misclassified(config_file="config.json"):
         print(f"[INFO] Creating the new \'{classification_dir}\' directory")
         os.mkdir(classification_dir)
 
-    # Generating Predictions
-    print(f"[INFO] Creating predictions...")
-    pred_prob = model.predict(test_generator)
-    y_pred = np.argmax(pred_prob, axis=1).astype(int)
-    y_true = np.array(test_generator.classes).astype(int)
-    class_labels = list(test_generator.class_indices.keys())
-    file_paths = test_generator.filepaths
-    print(f"[INFO] Prediction generation complete !")
-
-
+    # Labeling the images and writing them
     for prediction, ground_truth, img_url in zip(y_pred, y_true, file_paths):
         if prediction != ground_truth:
             new_filename = img_url.split(os.path.sep)[-1].replace('image ', '').replace('.JPG', '')
