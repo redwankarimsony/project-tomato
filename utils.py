@@ -71,7 +71,8 @@ def plot_training_summary(run_config):
         plt.ylabel('Accuracy')
         plt.grid("both")
         plt.legend()
-        plt.savefig(os.path.join(run_config['checkpoint_filepath'], 'graphs', '1.accuracy-comparison.pdf'))
+        plt.savefig(os.path.join(run_config['checkpoint_filepath'], 'graphs',
+                                 f"1.accuracy-comparison{run_config['fig_format']}"))
 
         # Plotting the loss
         fig = plt.figure(figsize=(10, 6))
@@ -82,7 +83,8 @@ def plot_training_summary(run_config):
         plt.ylabel('Loss')
         plt.grid("both")
         plt.legend()
-        plt.savefig(os.path.join(run_config['checkpoint_filepath'], 'graphs', '2.loss-comparison.pdf'))
+        plt.savefig(os.path.join(run_config['checkpoint_filepath'], 'graphs',
+                                 f"2.loss-comparison{run_config['fig_format']}"))
 
         # Plotting the Learning Rate
         fig = plt.figure(figsize=(10, 6))
@@ -92,7 +94,9 @@ def plot_training_summary(run_config):
         plt.ylabel('Learning Rate')
         plt.grid("both")
         plt.legend()
-        plt.savefig(os.path.join(run_config['checkpoint_filepath'], 'graphs', '3.learning-rate.pdf'))
+        plt.savefig(os.path.join(run_config['checkpoint_filepath'],
+                                 'graphs',
+                                 f"3.learning-rate{run_config['fig_format']}"))
 
 
 if __name__ == "__main__":

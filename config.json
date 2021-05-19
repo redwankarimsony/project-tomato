@@ -8,6 +8,7 @@
   "epochs": 8,
   "n_classes": 10,
   "seed": 42,
+  "fig_format": ".pdf",
   "data_augmentations":
   {
     "TRAIN_AUG": false,

@@ -88,7 +88,7 @@ def plot_confusion_matrix(config_file="config.json"):
     plt.xlabel('Predicted label')
     ax.set_xticklabels(textwrap.fill(x.get_text(), 20) for x in ax.get_xticklabels())
     ax.set_yticklabels(textwrap.fill(x.get_text(), 20) for x in ax.get_yticklabels())
-    filepath = os.path.join(config['checkpoint_filepath'], 'graphs', '4.confusion-matrix.pdf')
+    filepath = os.path.join(config['checkpoint_filepath'], 'graphs', f"4.confusion-matrix{config['fig_format']}")
     plt.savefig(filepath)
     print(f"\n\n[INFO] Confusion Matrix is saved in \"{filepath}\"")
 
