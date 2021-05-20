@@ -139,5 +139,5 @@ if __name__ == "__main__":
     print(f"[INFO] Prediction generation complete !")
 
     evaluate(y_true=y_true, y_pred=y_pred, config_dict=config)
-    # plot_confusion_matrix(y_true=y_true, y_pred=y_pred, classes=class_labels, config_dict=config)
-    # find_misclassified(y_true=y_true, y_pred=y_pred, file_paths=file_paths, config_dict=config)
+    plot_confusion_matrix(y_true=y_true, y_pred=y_pred, classes=class_labels, config_dict=config)
+    find_misclassified(y_true=y_true, y_pred=y_pred, file_paths=file_paths, config_dict=config)
