@@ -2,7 +2,7 @@ import os
 import json
 import pandas as pd
 import matplotlib.pyplot as plt
-from keras.callbacks import Callback, EarlyStopping, ReduceLROnPlateau, ModelCheckpoint
+from tensorflow.keras.callbacks import Callback, EarlyStopping, ReduceLROnPlateau, ModelCheckpoint
 
 # Setting default fontsize and dpi
 plt.rcParams["font.size"] = 12

@@ -1,13 +1,14 @@
 import json
 import tensorflow as tf
-from keras.models import Model, Sequential
-from keras.layers import BatchNormalization, Dense, Flatten, Dropout
-from keras.optimizers import Adam, SGD
-from keras.applications import MobileNetV2, DenseNet201, ResNet152V2, VGG19, InceptionV3
+from tensorflow import keras
+from tensorflow.keras.models import Model, Sequential
+from tensorflow.keras.layers import BatchNormalization, Dense, Flatten, Dropout
+from tensorflow.keras.optimizers import Adam, SGD
+from tensorflow.keras.applications import MobileNetV2, DenseNet201, ResNet152V2, VGG19, InceptionV3
 
 
-def build_model():
-    config = json.load(open("config.json", "r"))
+def build_model(config_file="config.json"):
+    config = json.load(open(config_file, "r"))
 
     # Model Selection
     backbone = None
