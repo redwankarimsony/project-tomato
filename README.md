@@ -1,39 +1,36 @@
 # Repository Structure:
 ```(Python)
-.
-├── NoCLAHE-NoAug-NoDense
-│   ├── graphs
-│   │   ├── 1.accuracy-comparison.png
-│   │   ├── 2.loss-comparison.png
-│   │   ├── 3.learning-rate.png
-│   │   └── 4.confusion-matrix.png
-│   ├── model_snapshot.ckpt
-│   │   ├── assets
-│   │   ├── variables
-│   │   └── saved_model.pb
-│   ├── saved_model
-│   │   ├── assets
-│   │   ├── variables
-│   │   └── saved_model.pb
-│   └── train_log.csv
-├── PlantVillage-Tomato
-│   ├── Tomato
-│   │   ├── Test
-│   │   ├── Train
-│   │   └── Val
-│   ├── class_mapping.json
-│   ├── test.csv
-│   ├── train.csv
-│   └── valid.csv
 ├── config.json
 ├── dataset_preparation.py
 ├── dataset.py
+├── download_dataset.py
 ├── evaluate.py
-├── filetree.txt
+├── inference-config.json
+├── inference.py
 ├── model.py
+├── PlantVillage-Tomato
+│   ├── All-Tomato
+│   ├── Test
+│   ├── test.csv
+│   ├── test.txt
+│   ├── Train
+│   ├── train.csv
+│   ├── train.txt
+│   ├── trash.py
+│   ├── Val
+│   ├── valid.csv
+│   └── valid.txt
 ├── README.md
+├── saved_models
+│   ├── MobileNetV1_WithoutCLAHE_NoAug_WithoutDense_ValBest.h5
+│   └── MobileNetV2_WithCLAHE_NoAug_WithoutDense_ValBest.h5
+├── splits
+│   ├── test.txt
+│   ├── train.txt
+│   └── valid.txt
 ├── train.py
 └── utils.py
+
 ```
 
 
