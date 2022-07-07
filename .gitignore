@@ -2,7 +2,6 @@ PlantVillage-Tomato/Train/*
 PlantVillage-Tomato/Test/*
 PlantVillage-Tomato/Val/*
 PlantVillage-Tomato/All-Tomato/*
-saved_models/*
 
 __pycache__
 .idea
