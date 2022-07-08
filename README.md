@@ -85,17 +85,19 @@ python inference.py
 
 
 ## Citation Instructions
-If you use part of the paper or code, please cite this paper with the following bibtex. 
+If you use part of the paper or code, please cite this paper with the following bibtex:
 ```
-@ARTICLE{9810234,  
+@article{ahmed2022less,  
         author={Ahmed, Sabbir and Hasan, Md. Bakhtiar and Ahmed, Tasnim and Sony, Md. Redwan Karim and Kabir, Md. Hasanul},  
-        journal={IEEE Access},   
-        title={Less is More: Lighter and Faster Deep Neural Architecture for Tomato Leaf Disease Classification},   
+        journal={{IEEE Access}},   
+        title={{Less is More: Lighter and Faster Deep Neural Architecture for Tomato Leaf Disease Classification}},   
         year={2022},  
         volume={},  
         number={},  
         pages={1-1},  
-        doi={10.1109/ACCESS.2022.3187203}
+        doi={10.1109/ACCESS.2022.3187203},
+        url={https://ieeexplore.ieee.org/document/9810234},
+        publisher={{IEEE}}
         }
 ```
 
