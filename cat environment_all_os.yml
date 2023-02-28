@@ -1,0 +1,9 @@
+name: tomato
+channels:
+  - defaults
+dependencies:
+  - python=3.8
+  - tensorflow-gpu=2.4.1
+  - pandas
+  - matplotlib
+prefix: /home/sonymd/anaconda3/envs/tomato
