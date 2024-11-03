@@ -1,4 +1,6 @@
-This repository is the official implementation of the paper published in IEEE Access Titled [S. Ahmed, M. B. Hasan, T. Ahmed, M. R. K. Sony and M. H. Kabir, "Less is More: Lighter and Faster Deep Neural Architecture for Tomato Leaf Disease Classification," in IEEE Access, 2022, doi: 10.1109/ACCESS.2022.3187203.](https://ieeexplore.ieee.org/document/9810234).
+This repository is the official implementation of the paper published in IEEE Access Titled 
+
+[S. Ahmed, M. B. Hasan, T. Ahmed, M. R. K. Sony and M. H. Kabir, "Less is More: Lighter and Faster Deep Neural Architecture for Tomato Leaf Disease Classification," ](https://ieeexplore.ieee.org/document/9810234) in IEEE Access Journal. DOI: 10.1109/ACCESS.2022.3187203.
 
 This branch contains the inference code. 
 
